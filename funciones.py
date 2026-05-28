@@ -8,7 +8,7 @@ Tiene errores intencionales de sintaxis, lógica y uso de parámetros.
 
 def agregar_estudiante(estudiantes):
     print("\n--- Agregar estudiante ---")
-    rut = input("Ingrese RUT: ")
+    rut = input("Ingrese rut con puntos y guion: ")
     nombre = input("Ingrese nombre: ")
     carrera = input("Ingrese carrera: ")
     edad = int(input("Ingrese edad: "))
@@ -20,7 +20,7 @@ def agregar_estudiante(estudiantes):
         "edad": edad
     }
 
-    estudiantes = estudiante
+    estudiantes.append (estudiante)
     print("Estudiante agregado correctamente")
 
 
@@ -34,7 +34,7 @@ def listar_estudiantes(estudiantes):
             print(f"RUT: {estudiantes[i]['rut']}")
             print(f"Nombre: {estudiantes[i]['nombre']}")
             print(f"Carrera: {estudiantes[i]['carrera']}")
-            print(f"Edad: {estudiantes['edad']}")
+            print(f"Edad: {estudiantes[i]['edad']}")
             print("------------------------")
 
 
@@ -44,7 +44,7 @@ def buscar_estudiante(estudiantes, rut):
     encontrado = False
 
     for estudiante in estudiantes:
-        if estudiante["nombre"] == rut:
+        if estudiante["rut"] == rut:
             print("Estudiante encontrado")
             print(f"RUT: {estudiante['rut']}")
             print(f"Nombre: {estudiante['nombre']}")
@@ -52,7 +52,7 @@ def buscar_estudiante(estudiantes, rut):
             print(f"Edad: {estudiante['edad']}")
             encontrado = True
 
-    if encontrado = False:
+    if encontrado == False:
         print("No se encontró el estudiante")
 
 
@@ -63,7 +63,7 @@ def actualizar_estudiante(estudiantes, rut):
         if estudiante["rut"] == rut:
             nuevo_nombre = input("Ingrese nuevo nombre: ")
             nueva_carrera = input("Ingrese nueva carrera: ")
-            nueva_edad = input("Ingrese nueva edad: ")
+            nueva_edad = int(input("Ingrese nueva edad: "))
 
             estudiante["nombre"] = nuevo_nombre
             estudiante["carrera"] = nueva_carrera
@@ -79,7 +79,7 @@ def eliminar_estudiante(estudiantes, rut):
     print("\n--- Eliminar estudiante ---")
 
     for estudiante in estudiantes:
-        if estudiante["rut"] = rut:
+        if estudiante["rut"] == rut:
             estudiantes.remove(estudiante)
             print("Estudiante eliminado correctamente")
             return
