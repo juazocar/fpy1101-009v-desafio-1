@@ -8,13 +8,13 @@ La misión del estudiante es clonar el repositorio, crear una rama,
 corregir los errores y dejar funcionando el CRUD.
 """
 
-from funciones import (
+from funciones import ()
     agregar_estudiante,
     listar_estudiantes,
     buscar_estudiante,
     actualizar_estudiante,
     eliminar_estudiante
-)
+
 
 estudiantes = []
 
@@ -23,9 +23,12 @@ def mostrar_menu()
     print("1. Agregar estudiante")
     print("2. Listar estudiantes")
     print("3. Buscar estudiante")
+
+
+    
     print("4. Actualizar estudiante")
     print("5. Eliminar estudiante")
-    print("6. Salir")
+    print("6. Salir")  
 
 opcion = 0
 
