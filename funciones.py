@@ -52,7 +52,7 @@ def buscar_estudiante(estudiantes, rut):
             print(f"Edad: {estudiante['edad']}")
             encontrado = True
 
-    if encontrado = False:
+    if encontrado == False:
         print("No se encontró el estudiante")
 
 
@@ -79,7 +79,7 @@ def eliminar_estudiante(estudiantes, rut):
     print("\n--- Eliminar estudiante ---")
 
     for estudiante in estudiantes:
-        if estudiante["rut"] = rut:
+        if estudiante["rut"] == rut:
             estudiantes.remove(estudiante)
             print("Estudiante eliminado correctamente")
             return

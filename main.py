@@ -18,7 +18,10 @@ from funciones import (
 
 estudiantes = []
 
-def mostrar_menu()
+
+opcion = 0
+
+while opcion != 6:
     print("\n===== SISTEMA CRUD ESTUDIANTES DUOC UC =====")
     print("1. Agregar estudiante")
     print("2. Listar estudiantes")
@@ -26,11 +29,6 @@ def mostrar_menu()
     print("4. Actualizar estudiante")
     print("5. Eliminar estudiante")
     print("6. Salir")
-
-opcion = 0
-
-while opcion != 6:
-    mostrar_menu()
 
     try:
         opcion = input("Seleccione una opción: ")
