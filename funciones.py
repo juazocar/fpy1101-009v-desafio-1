@@ -8,19 +8,31 @@ Tiene errores intencionales de sintaxis, lógica y uso de parámetros.
 
 def agregar_estudiante(estudiantes):
     print("\n--- Agregar estudiante ---")
-    rut = input("Ingrese RUT: ")
+    flag = True
+    flag_nombre = True
+    while flag_nombre == True:
+            rut = input("Ingrese RUT: ")
+            if rut in [estudiante["rut"] for estudiante in estudiantes]:
+                print("El rut ya se encuentra registrado.")
+                print("Pruebe con otro.")
+            elif rut not in [estudiante["rut"] for estudiante in estudiantes]:
+                flag_nombre = False
     nombre = input("Ingrese nombre: ")
     carrera = input("Ingrese carrera: ")
-    edad = int(input("Ingrese edad: "))
-
+    while flag == True:
+        try:
+            edad = int(input("Ingrese edad: "))
+            flag = False
+        except:
+            print("La edad debe ser un número entero")  
+    
     estudiante = {
         "rut": rut,
         "nombre": nombre,
         "carrera": carrera,
         "edad": edad
     }
-
-    estudiantes = estudiante
+    estudiantes.append(estudiante)
     print("Estudiante agregado correctamente")
 
 
@@ -34,7 +46,7 @@ def listar_estudiantes(estudiantes):
             print(f"RUT: {estudiantes[i]['rut']}")
             print(f"Nombre: {estudiantes[i]['nombre']}")
             print(f"Carrera: {estudiantes[i]['carrera']}")
-            print(f"Edad: {estudiantes['edad']}")
+            print(f"Edad: {estudiantes[i]['edad']}")
             print("------------------------")
 
 
@@ -44,7 +56,7 @@ def buscar_estudiante(estudiantes, rut):
     encontrado = False
 
     for estudiante in estudiantes:
-        if estudiante["nombre"] == rut:
+        if estudiante["rut"] == rut:
             print("Estudiante encontrado")
             print(f"RUT: {estudiante['rut']}")
             print(f"Nombre: {estudiante['nombre']}")
@@ -52,7 +64,7 @@ def buscar_estudiante(estudiantes, rut):
             print(f"Edad: {estudiante['edad']}")
             encontrado = True
 
-    if encontrado = False:
+    if encontrado == False:
         print("No se encontró el estudiante")
 
 
@@ -67,7 +79,7 @@ def actualizar_estudiante(estudiantes, rut):
 
             estudiante["nombre"] = nuevo_nombre
             estudiante["carrera"] = nueva_carrera
-            estudiante["edad"] == nueva_edad
+            estudiante["edad"] = nueva_edad
 
             print("Estudiante actualizado correctamente")
             return
@@ -79,9 +91,20 @@ def eliminar_estudiante(estudiantes, rut):
     print("\n--- Eliminar estudiante ---")
 
     for estudiante in estudiantes:
-        if estudiante["rut"] = rut:
-            estudiantes.remove(estudiante)
-            print("Estudiante eliminado correctamente")
-            return
+        if estudiante["rut"] == rut:
+            flag = True
+            while flag == True:
+                op = input("¿Está seguro que desea eliminar este estudiante? (s/n): ")
+                if op.lower() == "s":
+                    estudiantes.remove(estudiante)
+                    print("Estudiante eliminado correctamente")
+                    flag = False
+                    return
+                elif op.lower() == "n":
+                    print("Operación cancelada")
+                    flag = False
+                    return
+                else:
+                    print("Opción no válida")
 
     print("No se encontró el estudiante")
