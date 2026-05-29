@@ -15,8 +15,9 @@ from funciones import (
     actualizar_estudiante,
     eliminar_estudiante
 )
-
-estudiantes = []
+estudiantes = [{"rut": "17681723-6", "nombre": "Esteban Ramirez", "carrera": "Industrial",
+                "edad": 27}, {"rut": "12345678-9", "nombre": "Maria Perez", "carrera": "Informatica",
+                "edad": 22}]
 
 def mostrar_menu():
     print("\n===== SISTEMA CRUD ESTUDIANTES DUOC UC =====")
