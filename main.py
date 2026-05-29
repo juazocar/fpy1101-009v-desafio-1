@@ -18,7 +18,7 @@ from funciones import (
 
 estudiantes = []
 
-def mostrar_menu()
+def mostrar_menu():
     print("\n===== SISTEMA CRUD ESTUDIANTES DUOC UC =====")
     print("1. Agregar estudiante")
     print("2. Listar estudiantes")
@@ -37,15 +37,15 @@ while opcion != 6:
     except:
         print("Error al ingresar la opción")
 
-    if opcion == 1:
+    if opcion == "1":
         agregar_estudiante(estudiantes)
 
     elif opcion == "2":
-        listar_estudiantes()
+        listar_estudiantes(estudiantes)
 
     elif opcion == "3":
         rut = input("Ingrese RUT del estudiante a buscar: ")
-        buscar_estudiante(estudiantes, nombre)
+        buscar_estudiante(estudiantes, rut)
 
     elif opcion == "4":
         rut = input("Ingrese RUT del estudiante a actualizar: ")
