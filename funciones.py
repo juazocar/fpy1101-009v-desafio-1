@@ -20,7 +20,7 @@ def agregar_estudiante(estudiantes):
         "edad": edad
     }
 
-    estudiantes = estudiante
+    estudiantes.append (estudiante)
     print("Estudiante agregado correctamente")
 
 
@@ -34,7 +34,7 @@ def listar_estudiantes(estudiantes):
             print(f"RUT: {estudiantes[i]['rut']}")
             print(f"Nombre: {estudiantes[i]['nombre']}")
             print(f"Carrera: {estudiantes[i]['carrera']}")
-            print(f"Edad: {estudiantes['edad']}")
+            print(f"Edad: {estudiantes[i]['edad']}")
             print("------------------------")
 
 
@@ -63,7 +63,7 @@ def actualizar_estudiante(estudiantes, rut):
         if estudiante["rut"] == rut:
             nuevo_nombre = input("Ingrese nuevo nombre: ")
             nueva_carrera = input("Ingrese nueva carrera: ")
-            nueva_edad = input("Ingrese nueva edad: ")
+            nueva_edad = int(input("Ingrese nueva edad: "))
 
             estudiante["nombre"] = nuevo_nombre
             estudiante["carrera"] = nueva_carrera

@@ -30,31 +30,32 @@ while opcion != 6:
     print("5. Eliminar estudiante")
     print("6. Salir")
 
-    try:
-        opcion = input("Seleccione una opción: ")
-    except:
-        print("Error al ingresar la opción")
 
-    if opcion == 1:
+    if opcion == "1":
         agregar_estudiante(estudiantes)
 
     elif opcion == "2":
-        listar_estudiantes()
+        listar_estudiantes(estudiantes)
 
     elif opcion == "3":
         rut = input("Ingrese RUT del estudiante a buscar: ")
-        buscar_estudiante(estudiantes, nombre)
+        buscar_estudiante(estudiantes,  rut)
 
     elif opcion == "4":
         rut = input("Ingrese RUT del estudiante a actualizar: ")
-        actualizar_estudiante(estudiantes)
+        actualizar_estudiante(estudiantes, rut)
 
     elif opcion == "5":
         rut = input("Ingrese RUT del estudiante a eliminar: ")
-        eliminar_estudiante(rut, estudiantes)
+        eliminar_estudiante(estudiantes, rut)
 
     elif opcion == "6":
         print("Saliendo del sistema...")
 
     else:
         print("Opción inválida")
+
+    try:
+        opcion = input("Seleccione una opción: ")
+    except:
+        print("Error al ingresar la opción")
