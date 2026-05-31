@@ -9,9 +9,18 @@ Tiene errores intencionales de sintaxis, lógica y uso de parámetros.
 def agregar_estudiante(estudiantes):
     print("\n--- Agregar estudiante ---")
     rut = input("Ingrese RUT: ")
+    for estudiante in estudiantes:
+        if estudiante["rut"] == rut:
+            print("Error: ya existe un estudiante con ese RUT.")
+            return
     nombre = input("Ingrese nombre: ")
     carrera = input("Ingrese carrera: ")
-    edad = int(input("Ingrese edad: "))
+    while True:
+        try:
+            edad = int(input("Ingrese edad: "))
+            break
+        except ValueError:
+            print ("Debe ingresar un numero")
 
     estudiante = {
         "rut": rut,
@@ -51,22 +60,27 @@ def buscar_estudiante(estudiantes, rut):
             print(f"Carrera: {estudiante['carrera']}")
             print(f"Edad: {estudiante['edad']}")
             encontrado = True
-    else:
+            break
+    if not encontrado:
         print("No se encontró el estudiante")
-        encontrado = False
 
-def actualizar_estudiante(estudiantes, rut):
+def actualizar_estudiante(rut, estudiantes ):
     print("\n--- Actualizar estudiante ---")
 
     for estudiante in estudiantes:
         if estudiante["rut"] == rut:
             nuevo_nombre = input("Ingrese nuevo nombre: ")
             nueva_carrera = input("Ingrese nueva carrera: ")
-            nueva_edad = input("Ingrese nueva edad: ")
+            while True:
+                try:         
+                    nueva_edad = int(input("Ingrese nueva edad: "))
+                    break
+                except ValueError:
+                    print ("Debe ingresar un numero")
 
             estudiante["nombre"] = nuevo_nombre
             estudiante["carrera"] = nueva_carrera
-            estudiante["edad"] == nueva_edad
+            estudiante["edad"] = nueva_edad
 
             print("Estudiante actualizado correctamente")
             return
@@ -79,8 +93,12 @@ def eliminar_estudiante(estudiantes, rut):
 
     for estudiante in estudiantes:
         if estudiante["rut"] == rut:
-            estudiantes.remove(estudiante)
-            print("Estudiante eliminado correctamente")
+            confirmar = input(f"¿Está seguro de eliminar a {estudiante['nombre']}? (S/N): ")
+            if confirmar.upper() == "S":
+                estudiantes.remove(estudiante)
+                print("Estudiante eliminado correctamente")
+            else:
+                print("Eliminacion cancelada")
             return
 
     print("No se encontró el estudiante")

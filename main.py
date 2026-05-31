@@ -16,7 +16,25 @@ from funciones import (
     eliminar_estudiante
 )
 
-estudiantes = []
+estudiantes = [{
+        "rut": "11111111-1",
+        "nombre": "Juan Pérez",
+        "carrera": "Analista Programador",
+        "edad": 20
+    },
+    {
+        "rut": "22222222-2",
+        "nombre": "Mariana Gonzales",
+        "carrera": "Ingeniería Informática",
+        "edad": 22
+    },
+    {
+        "rut": "33333333-3",
+        "nombre": "Pedro Soto",
+        "carrera": "Ciberseguridad",
+        "edad": 21
+    }
+]
 
 def mostrar_menu():
     print("\n===== SISTEMA CRUD ESTUDIANTES DUOC UC =====")
@@ -27,9 +45,9 @@ def mostrar_menu():
     print("5. Eliminar estudiante")
     print("6. Salir")
 
-opcion = 0
+opcion = ""
 
-while opcion != 6:
+while opcion != "6":
     mostrar_menu()
 
     try:
@@ -49,11 +67,11 @@ while opcion != 6:
 
     elif opcion == "4":
         rut = input("Ingrese RUT del estudiante a actualizar: ")
-        actualizar_estudiante(estudiantes)
+        actualizar_estudiante(rut, estudiantes)
 
     elif opcion == "5":
         rut = input("Ingrese RUT del estudiante a eliminar: ")
-        eliminar_estudiante(rut, estudiantes)
+        eliminar_estudiante(estudiantes, rut)
 
     elif opcion == "6":
         print("Saliendo del sistema...")
