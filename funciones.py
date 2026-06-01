@@ -20,7 +20,7 @@ def agregar_estudiante(estudiantes):
         "edad": edad
     }
 
-    estudiantes.append (estudiante)
+    estudiantes.append(estudiante)
     print("Estudiante agregado correctamente")
 
 
@@ -44,7 +44,7 @@ def buscar_estudiante(estudiantes, rut):
     encontrado = False
 
     for estudiante in estudiantes:
-        if estudiante["nombre"] == rut:
+        if estudiante["rut"] == rut:
             print("Estudiante encontrado")
             print(f"RUT: {estudiante['rut']}")
             print(f"Nombre: {estudiante['nombre']}")
@@ -67,7 +67,7 @@ def actualizar_estudiante(estudiantes, rut):
 
             estudiante["nombre"] = nuevo_nombre
             estudiante["carrera"] = nueva_carrera
-            estudiante["edad"] == nueva_edad
+            estudiante["edad"] = nueva_edad
 
             print("Estudiante actualizado correctamente")
             return
