@@ -11,7 +11,12 @@ def agregar_estudiante(estudiantes):
     rut = input("Ingrese RUT: ")
     nombre = input("Ingrese nombre: ")
     carrera = input("Ingrese carrera: ")
-    edad = int(input("Ingrese edad: "))
+    while True:
+        edad = input("Ingrese edad: ")
+        if edad.isdigit():
+            edad = int(edad)
+            break
+        print("Edad inválida. Por favor, ingrese una edad válida.")
 
     estudiante = {
         "rut": rut,
@@ -20,7 +25,7 @@ def agregar_estudiante(estudiantes):
         "edad": edad
     }
 
-    estudiantes = estudiante
+    estudiantes.append(estudiante)
     print("Estudiante agregado correctamente")
 
 
@@ -34,7 +39,7 @@ def listar_estudiantes(estudiantes):
             print(f"RUT: {estudiantes[i]['rut']}")
             print(f"Nombre: {estudiantes[i]['nombre']}")
             print(f"Carrera: {estudiantes[i]['carrera']}")
-            print(f"Edad: {estudiantes['edad']}")
+            print(f"Edad: {estudiantes[i]['edad']}")
             print("------------------------")
 
 
@@ -44,7 +49,9 @@ def buscar_estudiante(estudiantes, rut):
     encontrado = False
 
     for estudiante in estudiantes:
-        if estudiante["nombre"] == rut:
+        if estudiante["rut"] == rut:
+            print("Error. Ya existe un estudiante con ese rut")
+            return
             print("Estudiante encontrado")
             print(f"RUT: {estudiante['rut']}")
             print(f"Nombre: {estudiante['nombre']}")
@@ -52,7 +59,7 @@ def buscar_estudiante(estudiantes, rut):
             print(f"Edad: {estudiante['edad']}")
             encontrado = True
 
-    if encontrado = False:
+    if encontrado == False:
         print("No se encontró el estudiante")
 
 
@@ -67,7 +74,7 @@ def actualizar_estudiante(estudiantes, rut):
 
             estudiante["nombre"] = nuevo_nombre
             estudiante["carrera"] = nueva_carrera
-            estudiante["edad"] == nueva_edad
+            estudiante["edad"] = int(nueva_edad)
 
             print("Estudiante actualizado correctamente")
             return
@@ -79,9 +86,15 @@ def eliminar_estudiante(estudiantes, rut):
     print("\n--- Eliminar estudiante ---")
 
     for estudiante in estudiantes:
-        if estudiante["rut"] = rut:
-            estudiantes.remove(estudiante)
-            print("Estudiante eliminado correctamente")
-            return
+        if estudiante["rut"] == rut:
+            confirmar = False
+            respuesta = input("¿Está seguro? (S/N): ")
+            if respuesta.upper() == "S":
+                confirmar = True
+            if confirmar:
+                estudiantes.remove(estudiante)
+                print("Estudiante eliminado correctamente")
+            else:
+                print("Operación cancelada")
 
     print("No se encontró el estudiante")
